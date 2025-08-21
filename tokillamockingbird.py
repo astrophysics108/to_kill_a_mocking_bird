@@ -18,9 +18,15 @@ font = pygame.font.Font(None, 36)
 def main():
     global gravity, obstacle_speed,lives,score
     running = start_screen(screen) != -1
-    lines = [r"C:\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\atticus\spacetoadvance.png",r"C:\\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\atticus\pixel-speech-bubble.png",r"C:\\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\atticus\pixel-speech-bubble (1).png", r"C:\\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\atticus\pixel-speech-bubble (2).png",r"C:\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\atticus\pixel-speech-bubble (3).png"]
+    lines = [
+        "atticus/spacetoadvance.png",
+        "atticus/pixel-speech-bubble.png",
+        "atticus/pixel-speech-bubble (1).png",
+        "atticus/pixel-speech-bubble (2).png",
+        "atticus/pixel-speech-bubble (3).png"
+    ]
     if running:
-        running = run_voice_basic(inventory,lines, WIDTH//1.5,HEIGHT//4, r"C:\\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\atticusfinch.png", screen,question_indexes=[2],invent=["Mushroom for Miss Maudie", r"C:\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\mushroom.png"],voice=True) != -1
+        running = run_voice_basic(inventory,lines, WIDTH//1.5,HEIGHT//4, r"atticusfinch.png", screen,question_indexes=[2],invent=["Mushroom for Miss Maudie", r"C:\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\mushroom.png"],voice=True) != -1
     all_sprites = pygame.sprite.Group()
     render_bg(all_sprites)
 
@@ -29,15 +35,15 @@ def main():
     
     for i in range(3):
         obstacle = Obstacle(WIDTH + i * 400, 50, 50 * (350/700), 
-                            img=r"C:\\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\rock.png")
+                            img=r"rock.png")
         obstacles.add(obstacle)
     fast = pygame.sprite.Group()
     fast.add(Obstacle(WIDTH + 2200, 50, 50, 
-                            img=r"Games\squirrel.png"))
+                            img=r"squirrel.png"))
 
     all_sprites.add(player, obstacles, fast)
     score,obs, immunity_timer, immune = 0,0,0, False
-    pygame.mixer.music.load(r"Games\sfx\mainrunning.mp3")
+    pygame.mixer.music.load(r"sfx/mainrunning.mp3")
     pygame.mixer.music.play(-1) 
     pygame.mixer.music.set_volume(0.5) 
     t = 0
@@ -82,7 +88,7 @@ def main():
             immune, immunity_timer = True, 0
             if lives == 0:
                 pygame.mixer.music.pause()
-                sfx = pygame.mixer.Sound(r"Games\sfx\game-over_rNHDd5K.mp3") 
+                sfx = pygame.mixer.Sound(r"sfx/game-over_rNHDd5K.mp3") 
                 sfx.play()
                 game_over(screen, all_sprites)
                 running = False

@@ -6,11 +6,11 @@ WIDTH, HEIGHT = 800, 400
 GROUND_HEIGHT = 80
 PLAYER_JUMP = -12
 RED = (255, 0, 0)
-jump_sfx = pygame.mixer.Sound(r"Games\sfx\mixkit-player-jumping-in-a-video-game-2043.wav") 
+jump_sfx = pygame.mixer.Sound(r"sfx/mixkit-player-jumping-in-a-video-game-2043.wav") 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        img_path = r"C:\\Users\dsingh\OneDrive - The Perse School\python_2024-25\Games\4ffc7133-7f18-46cc-9c53-4f72c175d226-Recovered.png"
+        img_path = r"4ffc7133-7f18-46cc-9c53-4f72c175d226-Recovered.png"
         self.image = pygame.image.load(img_path)
         self.image = pygame.transform.scale(self.image, (50, int(50 * (799/517))))
         self.rect = self.image.get_rect(midbottom=(100, HEIGHT - GROUND_HEIGHT))
